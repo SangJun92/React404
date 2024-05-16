@@ -8,11 +8,14 @@ import StudentList from "./chapter03/StudentList";
 import Library2 from "./chapter03/Library2";
 import ConfirmDialog from "./chapter04/ConfirmDialog";
 import Clock from "./chapter04/Clock";
+import PropsEx from "./chapter05/PropsEx";
+import CommentList from "./chapter05/CommentList";
+import BoardList from "./chapter05/BoardList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // 시계만들기
-setInterval(() => { 
+// setInterval(() => {
 root.render(
   <React.StrictMode>
     {/* <App /> */}
@@ -20,10 +23,14 @@ root.render(
     {/* <StudentList/> */}
     {/* <Library2/> */}
     {/* <ConfirmDialog /> */}
-    <Clock />
+    {/* <Clock /> */}
+    {/* <PropsEx /> */}
+    {/* <CommentList /> */}
+    <BoardList />
+
   </React.StrictMode>
 );
-}, 1000); // 1초에 한번씩
+// }, 1000); // 1초에 한번씩
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
