@@ -43,13 +43,13 @@ function BoardList(props) {
   );
 }
 
-function BoardList(props) {
-    return(
-        <div>
-            <Board imgUrl="aaa.png" title="title1" content="내용1"
-            name="홍길동" date={new Date().toDateString}/>
-        </div>
-    )
-}
+// function BoardList(props) {
+//     return(
+//         <div>
+//             <Board imgUrl="aaa.png" title="title1" content="내용1"
+//             name="홍길동" date={new Date().toDateString}/>
+//         </div>
+//     )
+// }
 
 export default BoardList;
