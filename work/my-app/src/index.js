@@ -12,6 +12,9 @@ import PropsEx from "./chapter05/PropsEx";
 import CommentList from "./chapter05/CommentList";
 import BoardList from "./chapter05/BoardList";
 import NotificationList from "./chapter06/NotificationList";
+import Counter from "./chapter07/Counter";
+import Info from "./chapter07/Info";
+import Average from "./chapter07/Average";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -28,7 +31,11 @@ root.render(
     {/* <PropsEx /> */}
     {/* <CommentList /> */}
     {/* <BoardList /> */}
-    <NotificationList />
+    {/* <NotificationList /> */}
+    {/* <Counter /> */}
+    {/* <Info /> */}
+    {/* <App /> */}
+    <Average />
   </React.StrictMode>
 );
 // }, 1000); // 1초에 한번씩
