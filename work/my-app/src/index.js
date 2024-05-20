@@ -15,6 +15,8 @@ import NotificationList from "./chapter06/NotificationList";
 import Counter from "./chapter07/Counter";
 import Info from "./chapter07/Info";
 import Average from "./chapter07/Average";
+import Accommodate from "./chapter07/Accommodate";
+import Say from "./chapter08/Say";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -35,7 +37,9 @@ root.render(
     {/* <Counter /> */}
     {/* <Info /> */}
     {/* <App /> */}
-    <Average />
+    {/* <Average /> */}
+    {/* <Accommodate /> */}
+    <Say />
   </React.StrictMode>
 );
 // }, 1000); // 1초에 한번씩
