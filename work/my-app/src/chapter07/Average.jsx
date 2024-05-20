@@ -36,3 +36,4 @@ function Average(props) {
   );
 }
 export default Average;
+
