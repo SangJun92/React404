@@ -17,6 +17,9 @@ import Info from "./chapter07/Info";
 import Average from "./chapter07/Average";
 import Accommodate from "./chapter07/Accommodate";
 import Say from "./chapter08/Say";
+import Toggle from "./chapter08/Toggle";
+import ConfirmButton from "./chapter08/ConfirmButton";
+import EventPractice from "./chapter08/EventPractice";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -39,7 +42,10 @@ root.render(
     {/* <App /> */}
     {/* <Average /> */}
     {/* <Accommodate /> */}
-    <Say />
+    {/* <Say /> */}
+    {/* <Toggle /> */}
+    {/* <ConfirmButton /> */}
+    < EventPractice />
   </React.StrictMode>
 );
 // }, 1000); // 1초에 한번씩
