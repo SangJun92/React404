@@ -20,6 +20,13 @@ import Say from "./chapter08/Say";
 import Toggle from "./chapter08/Toggle";
 import ConfirmButton from "./chapter08/ConfirmButton";
 import EventPractice from "./chapter08/EventPractice";
+import Greeting from "./chapter09/Greeting";
+import LoginControl from "./chapter09/LoginControl";
+import LandingPage from "./chapter09/LandingPage";
+import NumberList from "./chapter10/NumberList";
+import StudentItemList from "./chapter10/StudentItemList";
+import InterationSample from "./chapter10/InterationSample";
+import BoardItemList from "./chapter10/BoardItemList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -45,7 +52,14 @@ root.render(
     {/* <Say /> */}
     {/* <Toggle /> */}
     {/* <ConfirmButton /> */}
-    < EventPractice />
+    {/* < EventPractice /> */}
+    {/* <Greeting /> */}
+    {/* <LoginControl /> */}
+    {/* <LandingPage /> */}
+    {/* <NumberList/> */}
+    {/* <StudentItemList /> */}
+    {/* <InterationSample /> */}
+    <BoardItemList />
   </React.StrictMode>
 );
 // }, 1000); // 1초에 한번씩
