@@ -27,6 +27,8 @@ import NumberList from "./chapter10/NumberList";
 import StudentItemList from "./chapter10/StudentItemList";
 import InterationSample from "./chapter10/InterationSample";
 import BoardItemList from "./chapter10/BoardItemList";
+import NameForm from "./chapter11/NameForm";
+import SignUp from "./chapter11/SignUp";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -59,7 +61,9 @@ root.render(
     {/* <NumberList/> */}
     {/* <StudentItemList /> */}
     {/* <InterationSample /> */}
-    <BoardItemList />
+    {/* <BoardItemList /> */}
+    {/* <NameForm /> */}
+    <SignUp />
   </React.StrictMode>
 );
 // }, 1000); // 1초에 한번씩
