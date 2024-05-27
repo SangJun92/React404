@@ -29,6 +29,8 @@ import InterationSample from "./chapter10/InterationSample";
 import BoardItemList from "./chapter10/BoardItemList";
 import NameForm from "./chapter11/NameForm";
 import SignUp from "./chapter11/SignUp";
+import Calculator from "./chapter12/Calculator";
+import TemperatureInput from "./chapter12/TemperatureInput";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -63,7 +65,9 @@ root.render(
     {/* <InterationSample /> */}
     {/* <BoardItemList /> */}
     {/* <NameForm /> */}
-    <SignUp />
+    {/* <SignUp /> */}
+    <Calculator />
+    {/* <TemperatureInput /> */}
   </React.StrictMode>
 );
 // }, 1000); // 1초에 한번씩
