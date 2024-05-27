@@ -31,6 +31,13 @@ import NameForm from "./chapter11/NameForm";
 import SignUp from "./chapter11/SignUp";
 import Calculator from "./chapter12/Calculator";
 import TemperatureInput from "./chapter12/TemperatureInput";
+import WelcomeDialog from "./chapter13/WelcomeDialog";
+import ProfileCard from "./chapter13/ProfileCard";
+import Maintest from "./chapter14/MainTest";
+import DarkOrLight from "./chapter14/DarkOrLight";
+import MainPage from "./chapter15/MainPage1";
+import MainPage1 from "./chapter15/MainPage1";
+import Blocks from "./chapter15/Blocks";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -66,8 +73,15 @@ root.render(
     {/* <BoardItemList /> */}
     {/* <NameForm /> */}
     {/* <SignUp /> */}
-    <Calculator />
+    {/* <Calculator /> */}
+    {/* <WelcomeDialog /> */}
     {/* <TemperatureInput /> */}
+    {/* <ProfileCard /> */}
+    {/* <Maintest /> */}
+    {/* <DarkOrLight /> */}
+    {/* <MainPage /> */}
+    {/* <MainPage1 /> */}
+    <Blocks />
   </React.StrictMode>
 );
 // }, 1000); // 1초에 한번씩
