@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
-import CommentList from "../list/CommentList";
-import data from "../../data.json";
-import TextInput from "../ui/TextInput";
-import Button from "../ui/Button";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { useNavigate, useParams } from 'react-router-dom';
+import CommentList from '../list/CommentList';
+import data from '../../data.json';
+import TextInput from '../ui/TextInput';
+import Button from '../ui/Button';
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -51,7 +51,7 @@ function PostViewPage(props) {
   const post = data.find((item) => {
     return item.id == postId;
   });
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
 
   return (
     <Wrapper>
@@ -59,7 +59,7 @@ function PostViewPage(props) {
         <Button
           title="뒤로가기"
           onClick={() => {
-            navigate("/");
+            navigate('/');
           }}
         />
         <PostContainer>
@@ -79,7 +79,7 @@ function PostViewPage(props) {
         <Button
           title="댓글 작성하기"
           onclick={() => {
-            navigate("/");
+            navigate('/');
           }}
         />
       </Container>
