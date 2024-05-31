@@ -5,25 +5,25 @@ import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 
 const Wrapper = styled.div`
-  padding: 1px;
   width: calc(100% - 32px);
-
+  padding: 1px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `;
 
 const Container = styled.div`
-width:100%
-max-width : 720px;
-:not(:last-child){
-    margin-button : 16px
-}
+  width: 100%;
+  max-width: 720px;
+  :not(:last-child) {
+    margin-bottom: 16px;
+  }
 `;
 
 function PostWritePage(props) {
   const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -38,13 +38,13 @@ function PostWritePage(props) {
           }}
         />
         <TextInput
-          height={20}
+          height={240}
           value={content}
           onChange={(event) => {
-            setTitle(event.target.value);
+            setContent(event.target.value);
           }}
         />
-        <Button title="글 작성하기" onChange={() => navigate("/")} />
+        <Button title="글 작성하기" onClick={() => navigate("/")} />
       </Container>
     </Wrapper>
   );

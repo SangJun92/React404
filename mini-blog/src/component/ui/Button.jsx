@@ -17,3 +17,5 @@ function Button(props) {
         </StyleButton>
     )
 }
+
+export default Button;
