@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import MainPage from './component/page/MainPage';
 import PostWritePage from './component/page/PostWritePage';
 import PostViewPage from './component/page/PostViewPage';
+import { useRef, useState } from 'react';
 
 const MainTitleText = styled.p`
   font-size: 24px;
@@ -14,16 +15,19 @@ const MainTitleText = styled.p`
 `;
 
 function App() {
-  const onCreate = (content) => {
-    const newItem = {
-      id: idRef.current,
-      content,
-      isDone: false,
-      createdDate: new Date().getTime(),
-    };
-    setTodo([newItem, ...todo]);
-    idRef.current += 1;
-  };
+  // const idRef = useRef(0);
+  // const [post, setpost] = useState(mockTodo);
+
+  // const onCreate = (content) => {
+  //   const newItem = {
+  //     id: idRef.current,
+  //     content,
+  //     isDone: false,
+  //     createdDate: new Date().getTime(),
+  //   };
+  //   setpost([newItem, ...todo]);
+  //   idRef.current += 1;
+  // };
 
   return (
     <BrowserRouter>

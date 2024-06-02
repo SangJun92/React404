@@ -21,12 +21,9 @@ const Container = styled.div`
   }
 `;
 
-// const styles = StyleSheet.create({
-//   back: {
-//     alignItems: 'center',
-//   },
-// });
-
+// postwritepage 컴포넌트는 두개의 state를 가지고 있습니다.
+// 하나는 글의 제목을 위한 state이고, 다른 하나는 글의 내용을 위한 state입니다.
+// 두개의 state 모두 useState hook을 이용하여 선언했습니다.
 function PostWritePage(props) {
   const navigate = useNavigate();
 
