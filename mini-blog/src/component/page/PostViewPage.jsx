@@ -62,6 +62,18 @@ function PostViewPage(props) {
             navigate('/');
           }}
         />
+        <Button
+          title="수정"
+          onClick={() => {
+            navigate('/');
+          }}
+        />
+        <Button
+          title="삭제"
+          onClick={() => {
+            navigate('/');
+          }}
+        />
         <PostContainer>
           <TitleText>{post.title}</TitleText>
           <ContentText>{post.content}</ContentText>

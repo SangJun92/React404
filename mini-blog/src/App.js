@@ -15,20 +15,6 @@ const MainTitleText = styled.p`
 `;
 
 function App() {
-  // const idRef = useRef(0);
-  // const [post, setpost] = useState(mockTodo);
-
-  // const onCreate = (content) => {
-  //   const newItem = {
-  //     id: idRef.current,
-  //     content,
-  //     isDone: false,
-  //     createdDate: new Date().getTime(),
-  //   };
-  //   setpost([newItem, ...todo]);
-  //   idRef.current += 1;
-  // };
-
   return (
     <BrowserRouter>
       <MainTitleText>상준의 미니 블로그</MainTitleText>
