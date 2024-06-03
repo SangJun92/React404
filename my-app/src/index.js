@@ -36,7 +36,8 @@ import ThemeTest from "./14.컨택스트/ThemeTest";
 import MainTesst from "./14.컨택스트/MainTest";
 import DarkOrLight from "./14.컨택스트/DarkOrLight";
 
-import AsyncTaskEx from "./18.비동기 통신/AsyncTaskEx";
+// import AsyncTaskEx from "./18.비동기 통신/AsyncTaskEx";
+import FetchAxois from "./18.비동기 통신/FetchAxios";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -100,7 +101,8 @@ root.render(
     {/* <Blocks/> */}
 
     {/* 18장 */}
-    <AsyncTaskEx />
+    {/* <AsyncTaskEx /> */}
+    <FetchAxois />
   </React.StrictMode>
 );
 
