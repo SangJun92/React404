@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -22,16 +22,22 @@ const Container = styled.div`
   }
 `;
 
-function PostWritePage({ addPost }) {
+function PostEditPage({ posts, editPost }) {
   const navigate = useNavigate();
+  const { postId } = useParams();
+  const post = posts.find((item) => item.id === parseInt(postId));
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState(post ? post.title : "");
+  const [content, setContent] = useState(post ? post.content : "");
 
   const handleSubmit = () => {
-    addPost(title, content);
-    navigate("/");
+    editPost(post.id, title, content);
+    navigate(`/post/${post.id}`);
   };
+
+  if (!post) {
+    return <p>게시글을 찾을 수 없습니다.</p>;
+  }
 
   return (
     <Wrapper>
@@ -46,10 +52,10 @@ function PostWritePage({ addPost }) {
           value={content}
           onChange={(event) => setContent(event.target.value)}
         />
-        <Button title="글 작성하기" onClick={handleSubmit} />
+        <Button title="수정하기" onClick={handleSubmit} />
       </Container>
     </Wrapper>
   );
 }
 
-export default PostWritePage;
+export default PostEditPage;

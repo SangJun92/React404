@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useNavigate, useParams } from 'react-router-dom';
-import CommentList from '../list/CommentList';
-import data from '../../data.json';
-import TextInput from '../ui/TextInput';
-import Button from '../ui/Button';
+import React, { useState } from "react";
+import styled from "styled-components";
+import CommentList from "../list/CommentList";
+import TextInput from "../ui/TextInput";
+import Button from "../ui/Button";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding: 16px;
   width: calc(100% - 32px);
   display: flex;
   flex-direction: column;
-  align-itmes: center;
+  align-items: flex-start;
   justify-content: center;
 `;
 
 const Container = styled.div`
   width: 100%;
   max-width: 720px;
+
   :not(:last-child) {
     margin-bottom: 16px;
   }
@@ -36,7 +36,7 @@ const TitleText = styled.p`
 
 const ContentText = styled.p`
   font-size: 16px;
-  font-weight: 32;
+  font-weight: 400;
   white-space: pre-wrap;
 `;
 
@@ -45,57 +45,63 @@ const CommentLabel = styled.p`
   font-weight: 500;
 `;
 
-function PostViewPage(props) {
+function PostViewPage({ posts, deletePost, editPost }) {
   const navigate = useNavigate();
   const { postId } = useParams();
-  const post = data.find((item) => {
-    return item.id == postId;
-  });
-  const [comment, setComment] = useState('');
+  const post = posts.find((item) => item.id === parseInt(postId));
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [title, setTitle] = useState(post ? post.title : "");
+  const [content, setContent] = useState(post ? post.content : "");
+
+  const handleEditSubmit = () => {
+    editPost(post.id, title, content);
+    setIsEditing(false);
+  };
+
+  if (!post) {
+    return <p>게시글을 찾을 수 없습니다.</p>;
+  }
 
   return (
     <Wrapper>
       <Container>
-        <Button
-          title="뒤로가기"
-          onClick={() => {
-            navigate('/');
-          }}
-        />
-        <Button
-          title="수정"
-          onClick={() => {
-            navigate('/');
-          }}
-        />
-        <Button
-          title="삭제"
-          onClick={() => {
-            navigate('/');
-          }}
-        />
+        <Button title="뒤로가기" onClick={() => navigate("/")} />
         <PostContainer>
-          <TitleText>{post.title}</TitleText>
-          <ContentText>{post.content}</ContentText>
+          {isEditing ? (
+            <>
+              <TextInput
+                height={20}
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+              />
+              <TextInput
+                height={240}
+                value={content}
+                onChange={(event) => setContent(event.target.value)}
+              />
+              <Button title="수정 완료" onClick={handleEditSubmit} />
+            </>
+          ) : (
+            <>
+              <TitleText>{post.title}</TitleText>
+              <ContentText>{post.content}</ContentText>
+              <Button title="수정" onClick={() => setIsEditing(true)} />
+            </>
+          )}
+          <Button
+            title="삭제"
+            onClick={() => {
+              deletePost(post.id);
+              navigate("/");
+            }}
+          />
         </PostContainer>
         <CommentLabel>댓글</CommentLabel>
         <CommentList comments={post.comments} />
-
-        <TextInput
-          heigh={40}
-          value={comment}
-          onChange={(event) => {
-            setComment(event.target.value);
-          }}
-        />
-        <Button
-          title="댓글 작성하기"
-          onclick={() => {
-            navigate('/');
-          }}
-        />
       </Container>
     </Wrapper>
   );
 }
+
 export default PostViewPage;

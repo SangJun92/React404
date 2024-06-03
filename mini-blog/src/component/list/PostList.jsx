@@ -1,34 +1,31 @@
 import React from "react";
-import styled from "styled-components"
-import PostListItem from "./PostListItem";
+import styled from "styled-components";
+import Button from "../ui/Button";
 
-const Wrapper=styled.div`
-    display:flex;
-    flex-direction:column;
-    align-items: flex-start;
-    justity-content : center;
-
-    :not(:last-chile){
-        margin-bottom : 16px;
-    };
+const ListWrapper = styled.div`
+  width: 100%;
 `;
 
-function PostList(props){
-    const {posts,onClickItem}=props;
-    return(
-        <Wrapper>
-            {posts.map((post, index) => {
-                return(
-                    <PostListItem 
-                        key={post.id} 
-                        post={post} 
-                        onClick={()=>{
-                            onClickItem(post);
-                    }} />
-                )
-            })
-        }
-    </Wrapper>
-    );
-}
+const Item = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin-bottom: 8px;
+`;
+
+const PostList = ({ posts, onClickItem }) => {
+  return (
+    <ListWrapper>
+      {posts.map((post) => (
+        <Item key={post.id}>
+          <div onClick={() => onClickItem(post)}>{post.title}</div>
+        </Item>
+      ))}
+    </ListWrapper>
+  );
+};
+
 export default PostList;
