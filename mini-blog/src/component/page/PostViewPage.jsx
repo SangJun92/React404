@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import CommentList from "../list/CommentList";
+import CommentList from "../list/Comment";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 import { useNavigate, useParams } from "react-router-dom";
@@ -89,13 +89,10 @@ function PostViewPage({ posts, deletePost, editPost }) {
               <Button title="수정" onClick={() => setIsEditing(true)} />
             </>
           )}
-          <Button
-            title="삭제"
-            onClick={() => {
-              deletePost(post.id);
-              navigate("/");
-            }}
-          />
+          <Button title="삭제" onClick={() => {
+            deletePost(post.id);
+            navigate("/");
+          }} />
         </PostContainer>
         <CommentLabel>댓글</CommentLabel>
         <CommentList comments={post.comments} />
