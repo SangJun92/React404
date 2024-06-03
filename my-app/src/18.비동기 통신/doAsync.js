@@ -31,7 +31,22 @@ increase(0, result => {
 })
 // -> 가독성 떨어짐
 
-function increase2(number) {
+function increasePromise(number) {
+    const promise = new Promise((response, reject) => {
+        setTimeout(() => {
+            const result = number + 10;
+            if(result >= 50) {
+                // 에러발생
+                const e = new Error('NumberTooBig')
+                return reject(e);
+            }
+            response(result);
+        }, 1000)
+    });
+    return promise;
+}
+
+function increaseAsync(number) {
     const promise = new Promise((response, reject) => {
         setTimeout(() => {
             const result = number + 10;

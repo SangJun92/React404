@@ -55,11 +55,32 @@ function AsyncTaskEx(props) {
         console.error(e);
       });
   };
+
+  const onAsyncAwaite = async() => { // async function onAsyncAwait() {}
+    try {
+      let result = await doAsync.increaseAsync(0);
+      console.log(result);
+      result = await doAsync.increaseAsync(result);
+      console.log(result);
+      result = await doAsync.increaseAsync(result);
+      console.log(result);
+      result = await doAsync.increaseAsync(result);
+      console.log(result);
+      result = await doAsync.increaseAsync(result);
+      console.log(result);
+      result = await doAsync.increaseAsync(result);
+      console.log(result);
+    } catch(e) {
+      console.error(e);
+    }
+  }
+  
   return (
     <div>
-      <button onClick={onPrintMe}>printMe</button>
-      <button onClick={onCallback}>callBack</button>
+      <button onClick={onPrintMe}>printme</button>
+      <button onClick={onCallback}>callback</button>
       <button onClick={onPromise}>promise</button>
+      <button onClick={onAsyncAwaite}>async_awaite</button>
     </div>
   );
 }
