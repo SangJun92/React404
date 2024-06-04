@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import TextInput from "../ui/TextInput";
-import Button from "../ui/Button";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import TextInput from '../ui/TextInput';
+import Button from '../ui/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -25,17 +25,19 @@ const Container = styled.div`
 function PostWritePage({ addPost }) {
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   const handleSubmit = () => {
-    addPost(title, content);
-    navigate("/");
+    addPost(title, content); // 글 추가 함수 호출
+    navigate('/');
   };
 
   return (
     <Wrapper>
       <Container>
+        <Button title="글 작성하기" onClick={handleSubmit} />
+        <Button title="뒤로가기" onClick={() => navigate('/')} />
         <TextInput
           height={20}
           value={title}
@@ -46,7 +48,6 @@ function PostWritePage({ addPost }) {
           value={content}
           onChange={(event) => setContent(event.target.value)}
         />
-        <Button title="글 작성하기" onClick={handleSubmit} />
       </Container>
     </Wrapper>
   );

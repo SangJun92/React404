@@ -30,34 +30,40 @@ const EditInput = styled.input`
 function CommentListItem({ comment, onEditComment }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(comment.content);
+  const [originalContent, setOriginalContent] = useState('');
 
   const handleEdit = () => {
+    setOriginalContent(editedContent);
     setIsEditing(true);
   };
 
   const handleSave = () => {
-    setEditedContent((prevContent) => {
-      onEditComment(comment.id, prevContent);
-      return prevContent;
-    });
+    onEditComment(comment.id, editedContent);
+    setIsEditing(false);
+  };
+
+  const handleCancel = () => {
+    setEditedContent(originalContent);
     setIsEditing(false);
   };
 
   return (
     <Wrapper>
       {isEditing ? (
-        <EditInput
-          type="text"
-          value={editedContent}
-          onChange={(e) => setEditedContent(e.target.value)}
-        />
+        <>
+          <EditInput
+            type="text"
+            value={editedContent}
+            onChange={(e) => setEditedContent(e.target.value)}
+          />
+          <button onClick={handleSave}>저장</button>
+          <button onClick={handleCancel}>취소</button>
+        </>
       ) : (
-        <ContentText>{editedContent}</ContentText> // 수정된 내용 반영
-      )}
-      {isEditing ? (
-        <button onClick={handleSave}>저장</button>
-      ) : (
-        <button onClick={handleEdit}>수정</button>
+        <>
+          <ContentText>{editedContent}</ContentText>
+          <button onClick={handleEdit}>수정</button>
+        </>
       )}
     </Wrapper>
   );

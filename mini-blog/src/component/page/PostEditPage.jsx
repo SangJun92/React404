@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import TextInput from "../ui/TextInput";
-import Button from "../ui/Button";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import TextInput from '../ui/TextInput';
+import Button from '../ui/Button';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -27,8 +27,8 @@ function PostEditPage({ posts, editPost }) {
   const { postId } = useParams();
   const post = posts.find((item) => item.id === parseInt(postId));
 
-  const [title, setTitle] = useState(post ? post.title : "");
-  const [content, setContent] = useState(post ? post.content : "");
+  const [title, setTitle] = useState(post ? post.title : '');
+  const [content, setContent] = useState(post ? post.content : '');
 
   const handleSubmit = () => {
     editPost(post.id, title, content);
