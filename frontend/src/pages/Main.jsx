@@ -3,26 +3,26 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function Main() {
-  const [boards, setBoadrs] = useState([]);
+  const [boards, setBoards] = useState([]);
 
-  //   // 수정하기
-  //   const loadUsers = async () => {
-  //     const result = await axios.get("http://localhost:8082/users");
-  //     setUsers(result.data);
-  //     // console.log(result);
-  //   };
+  // 리스트보기
+  const loadUsers = async () => {
+    const result = await axios.get("http://localhost:8082/boards");
+    setBoards(result.data);
+    // console.log(result);
+  };
 
-  //   useEffect(() => {
-  //     loadUsers();
-  //   }, []);
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
-  //   // 삭제하기
-  //   const deleteUser = async (id) => {
-  //     if (window.confirm(`${id}번 게시물을 삭제하시겠습니까?`)) {
-  //       await axios.delete(`http://localhost:8082/user/${id}`);
-  //       loadUsers();
-  //     }
-  //   };
+  // 삭제하기
+  const deleteUser = async (bno) => {
+    if (window.confirm(`${bno}번 게시물을 삭제하시겠습니까?`)) {
+      await axios.delete(`http://localhost:8082/board/${bno}`);
+      loadUsers();
+    }
+  };
 
   return (
     <div className="container">
@@ -43,29 +43,29 @@ function Main() {
             <th scope="row">{index + 1}</th>
             <th>{board.title}</th>
             <th>{board.content}</th>
-            <th>{board.write}</th>
+            <th>{board.writer}</th>
             <th>{board.hit}</th>
-            <th>{board.create_time}</th>
-            {/* <th>
+            <th>{board.createTime}</th>
+            <th>
               <Link
-                to={`viewuser/${user.id}`}
+                to={`viewboard/${board.bno}`}
                 className="btn btn-outline-secondary mx-2"
               >
                 보기
               </Link>
               <Link
-                to={`edituser/${user.id}`}
+                to={`editboard/${board.bno}`}
                 className="btn btn-outline-warning mx-2"
               >
                 수정
               </Link>
               <button
-                onClick={() => deleteUser(user.id)}
+                onClick={() => deleteUser(board.bno)}
                 className="btn btn-outline-danger mx-2"
               >
                 삭제
               </button>
-            </th> */}
+            </th>
           </tr>
         ))}
       </table>

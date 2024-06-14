@@ -11,23 +11,27 @@ import ViewUser from "./users/ViewUser";
 import NavbarBoard from "./layout/NavbarBoard";
 import Main from "./pages/Main";
 import AddBoard from "./board/AddBoard";
+import EditBoard from "./board/EditBoard";
+import ViewBoard from "./board/ViewBoard";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/adduser" element={<AddUser />} />
           <Route path="/edituser/:id" element={<EditUser />} />
           <Route path="/viewuser/:id" element={<ViewUser />} />
-        </Routes>
+        </Routes> */}
 
         <NavbarBoard />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/addboard" element={<AddBoard />} />
+          <Route path="/editboard/:bno" element={<EditBoard />} />
+          <Route path="/viewboard/:bno" element={<ViewBoard />} />
         </Routes>
       </BrowserRouter>
     </div>

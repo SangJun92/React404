@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Home() {
   const [users, setUsers] = useState([]);
 
-  // 수정하기
+  // 리스트보기
   const loadUsers = async () => {
     const result = await axios.get("http://localhost:8082/users");
     setUsers(result.data);

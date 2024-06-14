@@ -15,11 +15,13 @@ function AddBoard() {
   const onInputChange = (e) => {
     setBoard({
       ...board,
-      [e.target.title]: e.target.value,
+      [e.target.name]: e.target.value,
     });
+    console.log(board);
   };
   const onSubmit = async (e) => {
     e.preventDefault();
+    console.log(board);
     await axios.post("http://localhost:8082/board", board);
     navigate("/");
   };
@@ -39,7 +41,7 @@ function AddBoard() {
                 type="text"
                 id="title"
                 className="form-control"
-                placeholder="이름 입력"
+                placeholder="글제목 입력"
                 name="title"
               />
               <label htmlFor="name" className="form-label">
@@ -50,7 +52,7 @@ function AddBoard() {
                 type="text"
                 id="content"
                 className="form-control"
-                placeholder="별명 입력"
+                placeholder="글내용 입력"
                 name="content"
               />
               <label htmlFor="name" className="form-label">
@@ -61,7 +63,7 @@ function AddBoard() {
                 type="text"
                 id="writer"
                 className="form-control"
-                placeholder="이메일 입력"
+                placeholder="이름 입력"
                 name="writer"
               />
             </div>
