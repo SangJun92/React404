@@ -61,12 +61,14 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(items));
   };
 
+  // 선호작 추가
   const addFavoriteMovie = (movie) => {
     const newList = [...favorites, movie];
     setFavorites(newList);
     saveToLocalStorage(newList);
   };
 
+  // 선호작 삭제
   const removeMovie = (movie) => {
     const newList = favorites.filter(
       (favourite) => favourite.imdbID !== movie.imdbID
