@@ -1,7 +1,24 @@
 import "./MovieList.css";
 import Fire from "../../assets/fire.png";
+import MovieCard from "./MovieCard";
+import { useEffect } from "react";
 
-export default function MovieList() {
+const MovieList = () => {
+
+	useEffect(() => {
+		fetchMovies();
+	}, []);
+
+	const fetchMovies = async () => {
+		const response = await fetch(
+			'https://api.themoviedb.org/3/movie/popular?api_key=본인API&language=ko'
+		);
+		const data = await response.json();
+		console.log(data.results);
+	};
+
+
+  
   return (
     <section className="movie_list">
       <header className="align_center movie_list_header">
@@ -28,7 +45,11 @@ export default function MovieList() {
         </div>
       </header>
 
-      <div className="movie_cards"></div>
+      <div className="movie_cards">
+        <MovieCard />
+      </div>
     </section>
   );
 }
+
+export default MovieList;
