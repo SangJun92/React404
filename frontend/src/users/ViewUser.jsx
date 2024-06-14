@@ -2,22 +2,23 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-const { id } = useParams();
-const [user, setUser] = useState({
-  name: "",
-  username: "",
-  email: "",
-});
-useEffect(() => {
-  loadUser();
-}, []);
-
-const loadUser = async () => {
-  const result = await axios.get(`http://localhost:8082/user/${id}`);
-};
-const { name, username, email } = user;
-
 function ViewUser() {
+  const { id } = useParams();
+  const [user, setUser] = useState({
+    name: "",
+    username: "",
+    email: "",
+  });
+  useEffect(() => {
+    loadUser();
+  }, []);
+
+  const loadUser = async () => {
+    const result = await axios.get(`http://localhost:8082/user/${id}`);
+    setUser(result.data);
+  };
+  const { name, username, email } = user;
+  
   return (
     <div className="container">
       <div className="row">
@@ -47,3 +48,5 @@ function ViewUser() {
     </div>
   );
 }
+
+export default ViewUser;
