@@ -1,7 +1,13 @@
 import './MovieCard.css';
 import Star from '../../assets/star.png';
 
-const MovieCard = ({ title, posterPath, releaseDate, rating, description }) => {
+const MovieCard = ({
+  title,
+  posterPath,
+  releaseDate,
+  description,
+  voteAverage,
+}) => {
   const posterUrl = `https://image.tmdb.org/t/p/w500${posterPath}`;
 
   // export default function MovieCard() {
@@ -19,15 +25,18 @@ const MovieCard = ({ title, posterPath, releaseDate, rating, description }) => {
       <div className="movie_details">
         <h3 className="movie_details_heading">{title}</h3>
         <div className="align_center movie_date_rate">
-          <p>2023-06-14</p>
+          {/* 개봉일 */}
+          <p>{releaseDate}</p>
           <p className="align_center">
-            평점
+            {/* 평점 */}
+            {voteAverage}
             <img src={Star} alt="rating icon" className="card_emoji" />
           </p>
         </div>
         <p className="movie_description">
           {/* 영화 내용 설명 */}
-          {description}
+          {/* 삼항연산자를 사용하여 영화 내용이 100자가 넘어갈시 그 뒤로는 ...으로 표시 */}
+          {description.length > 100 ? description.slice(0, 100) + '...' : description}
         </p>
       </div>
     </a>

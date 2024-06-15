@@ -18,7 +18,7 @@ const MovieList = () => {
     );
     const data = await response.json();
     setMovies(data.results);
-    // console.log(data.results);c
+    // console.log(data.results);
   };
 
   return (
@@ -54,7 +54,8 @@ const MovieList = () => {
             key={movie.id}
             title={movie.title}
             posterPath={movie.poster_path}
-            releaseDate={movie.vote_average}
+            releaseDate={movie.release_date}
+            voteAverage={movie.vote_average}
             description={movie.overview}
           />
         ))}
