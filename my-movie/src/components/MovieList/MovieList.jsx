@@ -1,24 +1,26 @@
-import "./MovieList.css";
-import Fire from "../../assets/fire.png";
-import MovieCard from "./MovieCard";
-import { useEffect } from "react";
+import './MovieList.css';
+import Fire from '../../assets/fire.png';
+import MovieCard from './MovieCard';
+import { useEffect, useState } from 'react';
 
 const MovieList = () => {
+  // 처음 받은 movie 데이터들을 movies state로 관리하기
+  const [movies, setMovies] = useState([]);
 
-	useEffect(() => {
-		fetchMovies();
-	}, []);
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
-	const fetchMovies = async () => {
-		const response = await fetch(
-			'https://api.themoviedb.org/3/movie/popular?api_key=본인API&language=ko'
-		);
-		const data = await response.json();
-		console.log(data.results);
-	};
+  const fetchMovies = async () => {
+    const response = await fetch(
+      // 'https://api.themoviedb.org/3/movie/popular?api_key=본인API&language=ko'
+      'https://api.themoviedb.org/3/discover/movie?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
+    );
+    const data = await response.json();
+    setMovies(data.results);
+    // console.log(data.results);c
+  };
 
-
-  
   return (
     <section className="movie_list">
       <header className="align_center movie_list_header">
@@ -46,10 +48,19 @@ const MovieList = () => {
       </header>
 
       <div className="movie_cards">
-        <MovieCard />
+        {/* movies에 있는 영화 갯수만큼 MovieCard 만들기 */}
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            title={movie.title}
+            posterPath={movie.poster_path}
+            releaseDate={movie.vote_average}
+            description={movie.overview}
+          />
+        ))}
       </div>
     </section>
   );
-}
+};
 
 export default MovieList;
