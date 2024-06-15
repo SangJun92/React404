@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 const MovieList = () => {
   // 처음 받은 movie 데이터들을 movies state로 관리하기
   const [movies, setMovies] = useState([]);
+  // 평점에 따라 영화 걸러내기
+  const [filterMovies, setFilterMovies] = useState([]);
+  const [minRating, setMinRating] = useState(0);
 
   useEffect(() => {
     fetchMovies();
@@ -13,12 +16,19 @@ const MovieList = () => {
 
   const fetchMovies = async () => {
     const response = await fetch(
-      // 'https://api.themoviedb.org/3/movie/popular?api_key=본인API&language=ko'
       'https://api.themoviedb.org/3/discover/movie?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
     );
     const data = await response.json();
     setMovies(data.results);
-    // console.log(data.results);
+    setFilterMovies(data.results);
+  };
+
+  // 필터 메서드 만들기
+  const handleFilter = (rate) => {
+    setMinRating(rate);
+
+    const filtered = movies.filter((movie) => movie.vote_average >= rate);
+    setFilterMovies(filtered);
   };
 
   return (
@@ -30,9 +40,21 @@ const MovieList = () => {
 
         <div className="align_center movie_list_fs">
           <ul className="align_center movie_filter">
-            <li className="movie_filter_item active">8+ Star</li>
+            {/* <li className="movie_filter_item active">8+ Star</li>
             <li className="movie_filter_item">7+ Star</li>
-            <li className="movie_filter_item">6+ Star</li>
+            <li className="movie_filter_item">6+ Star</li> */}
+
+            <li
+              className="movie_filter_item active"
+              onClick={() => handleFilter(8)}>
+              8+ Star
+            </li>
+            <li className="movie_filter_item" onClick={() => handleFilter(7)}>
+              7+ Star
+            </li>
+            <li className="movie_filter_item" onClick={() => handleFilter(6)}>
+              6+ Star
+            </li>
           </ul>
 
           <select name="" id="" className="movie_sorting">
@@ -49,7 +71,7 @@ const MovieList = () => {
 
       <div className="movie_cards">
         {/* movies에 있는 영화 갯수만큼 MovieCard 만들기 */}
-        {movies.map((movie) => (
+        {filterMovies.map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}
@@ -58,6 +80,7 @@ const MovieList = () => {
             releaseDate={movie.release_date}
             voteAverage={movie.vote_average}
             description={movie.overview}
+            movie={movie}
           />
         ))}
       </div>
