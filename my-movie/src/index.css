@@ -1,18 +1,18 @@
 @font-face {
-  font-family: "Pretendard-Regular";
+  font-family: 'Pretendard-Regular';
   src: url(./assets/fonts/런드리고딕\ Regular.woff);
 }
 
 :root {
-	--body_backgroud: #101010;
-	--body_color: #fff;
-	--heading_color: #ffe400;
+  --body_backgroud: #101010;
+  --body_color: #fff;
+  --heading_color: #ffe400;
 }
 
 [data-theme='light'] {
-	--body_backgroud: #fff;
-	--body_color: #000;
-	--heading_color: #000;
+  --body_backgroud: #fff;
+  --body_color: #000;
+  --heading_color: #000;
 }
 
 * {
@@ -22,10 +22,14 @@
   transition: all 0.3s ease-in-out;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--body_backgroud);
   color: var(--body_color);
-  font-family: "Pretendard-Regular", sans-serif;
+  font-family: 'Pretendard-Regular', sans-serif;
 }
 
 .align_center {
