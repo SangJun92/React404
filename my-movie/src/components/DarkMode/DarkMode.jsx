@@ -10,6 +10,7 @@ const DarkMode = () => {
   const setLightTheme = () => document.querySelector('body').setAttribute('data-theme', 'light');
   const toggleTheme = (e) => (e.target.checked ? setDarkTheme() : setLightTheme());
 
+  // 시작시 다크모드로 버튼 체크가 안되어있음, Sun, Moon 주석해제하면 오류나옴
   setDarkTheme(); //처음 시작시 다크테마로 시작
   return (
     <div className="dark_mode">
