@@ -9,7 +9,7 @@ const userReducer = (state = {}, action) => {
       localStorage.removeItem("currentUser");
       return null;
     default:
-      return JSON.parse(localStorage.getItem("currentUser"));
+      return  null;//JSON.parse(localStorage.getItem("currentUser"));
   }
 };
 export default userReducer;
