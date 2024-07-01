@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import User from "../../model/User";
+import User from "../../models/User";
 import { useSelector } from "react-redux";
 import { registerService } from "../../Services/auth.service";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

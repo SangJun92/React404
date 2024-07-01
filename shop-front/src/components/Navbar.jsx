@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../logo.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Role } from "../model/Role";
+import { Role } from "../models/Role";
 import { clearCurrentUser } from "../store/actions/user";
 
 const Navbar = () => {

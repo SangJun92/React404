@@ -9,7 +9,7 @@ import Admin from "./pages/admin/Admin";
 import NotFound from "./pages/not-found/NotFound";
 import UnAuthorized from "./pages/unauthorized/UnAuthorized";
 import Profile from "./pages/profile/Profile";
-import { Role } from "./model/Role";
+import { Role } from "./models/Role";
 import AuthGuard from "./guards/AuthGuard";
 
 function App() {

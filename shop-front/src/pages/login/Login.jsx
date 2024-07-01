@@ -6,7 +6,7 @@ import { faDove, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { setCurrentUser } from "../../store/actions/user"
-import User from "../../model/User";
+import User from "../../models/User";
 import { loginService } from "../../Services/auth.service";
 
 const Login = () => {
