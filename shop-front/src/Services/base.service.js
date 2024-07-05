@@ -1,6 +1,7 @@
 import axios from "axios";
-import store from "../store/configStore";
+
 import { clearCurrentUser } from "../store/actions/user";
+import { store } from "../store/configStore";
 
 const authHeader = () => {
   const currentUser = store.getState().user;

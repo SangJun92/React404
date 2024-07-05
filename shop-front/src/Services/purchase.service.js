@@ -10,7 +10,8 @@ class PurchaseService {
   }
 
   getAllPerchases() {
-    return axios.get(API_URL, { headers: authHeader() });
+    // backend perchasesController에 Get주소랑 맞춰줘야함
+    return axios.get(API_URL+"/getList", { headers: authHeader() }); 
   }
 }
 const purchaseService = new PurchaseService();
