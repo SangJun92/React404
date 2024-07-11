@@ -41,17 +41,3 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
-/* 색상을 테마에 맞게 변경하는거 */
-.movie_filter_item {
-  padding: 5px 10px;
-  cursor: pointer;
-  color: var(--body_color); 
-} 
-
-/* 색상을 테마에 맞게 변경하는거 */
-.movie_filter_item.active {
-  border-bottom: 1px solid #e6e6e6;
-  font-weight: 500;
-  color: var(--heading_color); 
-}

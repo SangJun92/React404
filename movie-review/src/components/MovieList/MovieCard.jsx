@@ -15,8 +15,7 @@ const MovieCard = ({
   return (
     // 클릭시 영화 페이지 보여주기
     <a
-    // 영화 페이지 내가만든걸로 페이지로 보내게 수정
-      href={`https://www.themoviedb.org/movie/${id}?language=ko`} 
+      href={`https://www.themoviedb.org/movie/${id}?language=ko`}
       target="_blank"
       className="movie_card"
     >

@@ -14,7 +14,7 @@ const DarkMode = () => {
     e.target.checked ? setDarkTheme() : setLightTheme();
 
   // 시작시 다크모드로 버튼 체크가 안되어있음, Sun, Moon 주석해제하면 오류나옴
-  setDarkTheme(); //처음 시작시 다크테마로 시작
+  setLightTheme(); //처음 시작시 다크테마로 시작 -> 화이트모드로 변경했음(첫시작시 버튼이 안됨)
   return (
     <div className="dark_mode">
       <input
