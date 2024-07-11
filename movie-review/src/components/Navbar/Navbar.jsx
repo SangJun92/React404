@@ -8,7 +8,11 @@ import "./Navbar.css";
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <h1>MovieApp</h1>
+      <h1>
+        <a href="/" class="navbar_maintext">
+          MovieApp
+        </a>
+      </h1>
 
       <div className="navbar_links">
         <DarkMode />
@@ -30,8 +34,10 @@ export default function Navbar() {
               로그인
             </a>
           </li>
+        </div>
+        <div className="navbar-nav ms-auto me-5">
           <li className="nav-item">
-            <a href="/egister" className="nav-link">
+            <a href="/register" className="nav-link">
               가입하기
             </a>
           </li>

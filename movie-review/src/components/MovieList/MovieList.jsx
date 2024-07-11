@@ -70,6 +70,8 @@ const MovieList = ({ type, title, emoji }) => {
   }, [sort, filterMovies, movies]);
 
   return (
+
+    
     <section className="movie_list" id={`${type}`}>
       <header className="align_center movie_list_header">
         <h2 className="align_center movie_list_heading">
