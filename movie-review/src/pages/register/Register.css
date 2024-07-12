@@ -5,7 +5,8 @@
 
 .user-icon {
   font-size: 100px;
-  color: lightskyblue;
+  /* color: lightskyblue; */
+  color: darkslateblue;
 }
 
 form label {

@@ -1,5 +1,7 @@
-import './MovieCard.css';
-import Star from '../../assets/star.png';
+import React from "react";
+import "./MovieCard.css";
+import Star from "../../assets/star.png";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({
   title,
@@ -14,11 +16,13 @@ const MovieCard = ({
   // export default function MovieCard() {
   return (
     // 클릭시 영화 페이지 보여주기
-    <a
-      href={`https://www.themoviedb.org/movie/${id}?language=ko`}
-      target="_blank"
-      className="movie_card"
-    >
+    // <a
+    // href={`https://www.themoviedb.org/movie/${id}?language=ko`}
+    // href={`/view/${id}`}
+    // target="_blank"
+    // className="movie_card"
+    // >
+    <Link to={`/view/${id}`} className="movie_card">
       <img
         // src="https://t1.daumcdn.net/movie/947a0d62f2772aa0f5c73b86b631779ef1183879"
         // alt="movie poster"
@@ -43,11 +47,11 @@ const MovieCard = ({
           {/* 영화 내용 설명 */}
           {/* 삼항연산자를 사용하여 영화 내용이 100자가 넘어갈시 그 뒤로는 ...으로 표시 */}
           {description.length > 100
-            ? description.slice(0, 100) + '...'
+            ? description.slice(0, 100) + "..."
             : description}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 

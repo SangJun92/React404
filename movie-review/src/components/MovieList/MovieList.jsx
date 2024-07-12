@@ -1,8 +1,8 @@
-import './MovieList.css';
-import Fire from '../../assets/fire.png';
-import MovieCard from './MovieCard';
-import { useEffect, useState } from 'react';
-import _ from 'lodash';
+import "./MovieList.css";
+import Fire from "../../assets/fire.png";
+import MovieCard from "./MovieCard";
+import { useEffect, useState } from "react";
+import _ from "lodash";
 
 const MovieList = ({ type, title, emoji }) => {
   // 처음 받은 movie 데이터들을 movies state로 관리하기
@@ -12,22 +12,23 @@ const MovieList = ({ type, title, emoji }) => {
   const [minRating, setMinRating] = useState(0);
   // 정렬 관리
   const [sort, setSort] = useState({
-    by: 'default',
-    order: 'asc',
+    by: "default",
+    order: "asc",
   });
 
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [type]);
 
   const fetchMovies = async () => {
     const response = await fetch(
       // 'https://api.themoviedb.org/3/discover/movie?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
       // 'https://api.themoviedb.org/3/discover/movie/${type}?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1'
       // `https://api.themoviedb.org/3/movie/${type}?api_key=183928bab7fc630ed0449e4f66ec21bd&language=ko`
-      `https://api.themoviedb.org/3/movie/${type}?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+      `https://api.themoviedb.org/3/movie/${type}?api_key=317b4d9e8a4070df2a4f68ba2e8f2238&language=ko`
     );
     const data = await response.json();
+    console.log(data.results);
     setMovies(data.results);
     setFilterMovies(data.results);
   };
@@ -61,21 +62,19 @@ const MovieList = ({ type, title, emoji }) => {
   // }, [sort]);
 
   useEffect(() => {
-    if (sort.by !== 'default') {
+    if (sort.by !== "default") {
       const sortedMovies = _.orderBy(filterMovies, [sort.by], [sort.order]);
       setFilterMovies(sortedMovies);
     } else {
       setFilterMovies(movies);
     }
-  }, [sort, filterMovies, movies]);
+  }, [sort]);
 
   return (
-
-    
     <section className="movie_list" id={`${type}`}>
       <header className="align_center movie_list_header">
         <h2 className="align_center movie_list_heading">
-          {title} <img src={emoji} alt="fire emoji" className="navbar_emoji" />
+          {title} <img src={Fire} alt="fire emoji" className="navbar_emoji" />
         </h2>
 
         <div className="align_center movie_list_fs">
@@ -84,8 +83,8 @@ const MovieList = ({ type, title, emoji }) => {
             <li
               className={
                 minRating === 8
-                  ? 'movie_filter_item active'
-                  : 'movie_filter_item'
+                  ? "movie_filter_item active"
+                  : "movie_filter_item"
               }
               onClick={() => handleFilter(8)}
             >
@@ -94,8 +93,8 @@ const MovieList = ({ type, title, emoji }) => {
             <li
               className={
                 minRating === 7
-                  ? 'movie_filter_item active'
-                  : 'movie_filter_item'
+                  ? "movie_filter_item active"
+                  : "movie_filter_item"
               }
               onClick={() => handleFilter(7)}
             >
@@ -104,8 +103,8 @@ const MovieList = ({ type, title, emoji }) => {
             <li
               className={
                 minRating === 6
-                  ? 'movie_filter_item active'
-                  : 'movie_filter_item'
+                  ? "movie_filter_item active"
+                  : "movie_filter_item"
               }
               onClick={() => handleFilter(6)}
             >

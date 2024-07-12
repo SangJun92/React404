@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Pretendard-Regular';
+  font-family: "Pretendard-Regular";
   src: url(./assets/fonts/런드리고딕\ Regular.woff);
 }
 
@@ -9,7 +9,7 @@
   --heading_color: #ffe400;
 }
 
-[data-theme='light'] {
+[data-theme="light"] {
   --body_backgroud: #fff;
   --body_color: #000;
   --heading_color: #000;
@@ -29,7 +29,7 @@ html {
 body {
   background-color: var(--body_backgroud);
   color: var(--body_color);
-  font-family: 'Pretendard-Regular', sans-serif;
+  font-family: "Pretendard-Regular", sans-serif;
 }
 
 .align_center {
