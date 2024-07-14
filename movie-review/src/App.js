@@ -1,16 +1,16 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
+import logo from './logo.svg';
+import './App.css';
+import Navbar from './components/Navbar/Navbar';
 
-import MovieList from "./components/MovieList/MovieList";
-import Fire from "./assets/fire.png";
-import Star from "./assets/glowing-star.png";
-import Party from "./assets/partying-face.png";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import MovieList from './components/MovieList/MovieList';
+import Fire from './assets/fire.png';
+import Star from './assets/glowing-star.png';
+import Party from './assets/partying-face.png';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
-import View from "./pages/view/View";
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import View from './pages/view/View';
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
           />
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/view/${id}" element={<View />}></Route>
+          <Route path="/view/:id" element={<View />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
