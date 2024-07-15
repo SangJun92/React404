@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import '../../components/MovieList/MovieList.css'; // MovieList의 CSS 파일 가져오기
-import '../../components/MovieList/MovieCard.css'; // MovieCard의 CSS 파일 가져오기
-import './View.css';
-import { useSelector } from 'react-redux';
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../../components/MovieList/MovieList.css"; // MovieList의 CSS 파일 가져오기
+import "../../components/MovieList/MovieCard.css"; // MovieCard의 CSS 파일 가져오기
+import "./View.css";
+import { useSelector } from "react-redux";
+import { reviewService } from "../../Services/review.service";
 
 const View = () => {
   // useParams 훅을 사용하여 URL 파라미터에서 영화 ID를 가져옴
@@ -13,10 +14,12 @@ const View = () => {
   const [movie, setMovie] = useState(null);
 
   // review 상태: 사용자가 작성한 리뷰를 저장
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
 
   // 리뷰 리스트 상태: 작성된 리뷰들을 저장
   const [reviewList, setReviewList] = useState([]);
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   // 리덕스 상태에서 현재 로그인된 사용자 정보 가져오기
   const currentUser = useSelector((state) => state.user);
@@ -44,15 +47,51 @@ const View = () => {
   };
 
   // 리뷰 제출 시 실행되는 함수
-  const handleReviewSubmit = (e) => {
+  const handleReviewSubmit = async (e) => {
     e.preventDefault();
     if (!review.trim()) return; // 빈 리뷰는 추가하지 않도록 함
     if (!currentUser || !currentUser.username) {
-      alert('로그인이 필요합니다.');
+      alert("로그인이 필요합니다.");
       return;
     }
-    setReviewList([...reviewList, { name: currentUser.username, text: review }]);
-    setReview('');
+
+    // setReviewList([
+    //   ...reviewList,
+    //   { name: currentUser.username, text: review },
+    // ]);
+    // setReview("");
+
+    // reviewService(review)
+    //   .then((ok) => {
+    //     console.log("ok");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setErrorMessage("예상하지 못한 에러가 발생했습니다.");
+    //   });
+
+    
+    try {
+      const token = localStorage.getItem("token");
+      // if (!token) {
+      //   throw new Error("토큰이 없습니다.");
+      // }
+
+      // 리뷰 서비스 호출
+      const response = await reviewService(review, token);
+
+      // 리뷰 리스트 업데이트
+      setReviewList([
+        ...reviewList,
+        { name: currentUser.username, text: review },
+      ]);
+
+      // 리뷰 입력 창 초기화
+      setReview("");
+    } catch (error) {
+      console.error("리뷰 제출 실패:", error);
+      setErrorMessage("예상하지 못한 에러가 발생했습니다.");
+    }
   };
 
   // movie 데이터가 아직 로딩 중일 때 표시할 내용
@@ -84,10 +123,14 @@ const View = () => {
       <form className="review_form" onSubmit={handleReviewSubmit}>
         <textarea
           className="review_textarea"
+          name="content"
           value={review}
           onChange={handleReviewChange}
           placeholder="리뷰를 작성하세요"
         />
+        {errorMessage && (
+          <div className="alert alert-danger">{errorMessage}</div>
+        )}
         <button className="review_button" type="submit">
           리뷰 작성
         </button>
