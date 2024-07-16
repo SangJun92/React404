@@ -37,8 +37,17 @@ const View = () => {
       // 받아온 데이터를 movie 상태에 저장
       setMovie(data);
     };
+
+    // 리뷰 리스트를 가져오는 함수 정의
+    const fetchReviews = async () => {
+      const response = await fetch(`/api/review/inputReview/${id}`);
+      const data = await response.json();
+      setReviewList(data);
+    };
+
     // 비동기 함수 호출
     fetchMovie();
+    fetchReviews();
   }, [id]); // id가 변경될 때마다 useEffect 실행
 
   // 리뷰 텍스트 변경 시 상태 업데이트
@@ -54,21 +63,6 @@ const View = () => {
       alert("로그인이 필요합니다.");
       return;
     }
-
-    // setReviewList([
-    //   ...reviewList,
-    //   { name: currentUser.username, text: review },
-    // ]);
-    // setReview("");
-
-    // reviewService(review)
-    //   .then((ok) => {
-    //     console.log("ok");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setErrorMessage("예상하지 못한 에러가 발생했습니다.");
-    //   });
 
     try {
       const token = JSON.parse(localStorage.getItem("currentUser")).token;
