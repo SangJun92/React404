@@ -70,15 +70,15 @@ const View = () => {
     //     setErrorMessage("예상하지 못한 에러가 발생했습니다.");
     //   });
 
-    
     try {
-      const token = localStorage.getItem("token");
-      // if (!token) {
-      //   throw new Error("토큰이 없습니다.");
-      // }
+      const token = JSON.parse(localStorage.getItem("currentUser")).token;
+      console.log(token);
+      if (!token) {
+        throw new Error("토큰이 없습니다.");
+      }
 
       // 리뷰 서비스 호출
-      const response = await reviewService(review, token);
+      const response = await reviewService(review, token, id);
 
       // 리뷰 리스트 업데이트
       setReviewList([
